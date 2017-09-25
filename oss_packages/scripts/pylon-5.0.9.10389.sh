@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="pylon-5.0.9.10389-x86"
+#PKG_DIR="pylon-5.0.9.10389-x86"
+PKG_DIR="pylon-5.0.9.10389-arm-hf"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
@@ -13,9 +14,9 @@ PKG_DOWNLOAD="https://www.baslerweb.com/fp-1496749873/media/downloads/software/p
 
 # md5 checksum of archive in dl directory
 #x86
-PKG_CHECKSUM="2804501f1cc874ab5fa693a4b034c637"
-
-
+#PKG_CHECKSUM="2804501f1cc874ab5fa693a4b034c637"
+#arm-hf
+PKG_CHECKSUM="aca438526645ad86ee844e8b89dc0d5e"
 
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
@@ -29,8 +30,14 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
 configure()
 {
-    cd "${PKG_SRC_DIR}"
+    cd "${PKG_BUILD_DIR}"
     tar -C /opt -xzf pylonSDK*.tar.
+    
+}
+
+compile()
+{
+    cd "${PKG_SRC_DIR}"
     export CFLAGS="${M3_CFLAGS}"
     export LDFLAGS="${M3_LDFLAGS}"
     export TARGET_ARCH="-march=armv7-a"
@@ -41,13 +48,7 @@ configure()
     export LD="armv7a-hardfloat-linux-gnueabi-ld"
     export CC_host="gcc"
     export CXX_host="g++"
-    ./configure --target="${M3_TARGET}" --host="${M3_TARGET}"
-}
-
-compile()
-{
-    cd "${PKG_SRC_DIR}"
-    
+   
     make ${M3_MAKEFLAGS}
 }
 
