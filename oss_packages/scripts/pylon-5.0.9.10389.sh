@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="pylon-5.0.9.10389-86"
+PKG_DIR="pylon-5.0.9.10389-x86"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
@@ -9,11 +9,11 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 # download link for the sources to be stored in dl directory
 #https://www.baslerweb.com/fp-1496749873/media/downloads/software/pylon_software/pylon-5.0.9.10389-x86.tar.gz
 #https://www.baslerweb.com/fp-1496749873/media/downloads/software/pylon_software/pylon-5.0.9.10389-arm-hf.tar.gz
-PKG_DOWNLOAD="https://www.baslerweb.com/fp-1496749873/media/downloads/software/pylon_software/"
+PKG_DOWNLOAD="https://www.baslerweb.com/fp-1496749873/media/downloads/software/pylon_software/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-#PKG_CHECKSUM="da4b2289b7cfb19583d54e9eaaef1c3a"
-#PKG_CHECKSUM="9dc53067556d2dd567808fd509519dd6"
+#x86
+PKG_CHECKSUM="2804501f1cc874ab5fa693a4b034c637"
 
 
 
@@ -40,8 +40,7 @@ configure()
     export LD="armv7a-hardfloat-linux-gnueabi-ld"
     export CC_host="gcc"
     export CXX_host="g++"
-    export PYLON_ROOT="${PKG_BUILD_DIR}"
-    tar -xvzf ${PKG_ARCHIVE_FILE} /opt/
+    tar -C /opt -xzf pylonSDK*.tar.gz
 }
 
 compile()
