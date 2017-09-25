@@ -2,7 +2,8 @@
 
 # name of directory after extracting the archive in working directory
 PKG_DIR="zxing-cpp-master"
-TARGETS="zxing libzxing.a"
+TARGET="zxing"
+LIB="libzxing.a"
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.zip"
 
@@ -56,6 +57,7 @@ install_staging()
 {
     cd "${PKG_BUILD_DIR}"
     cp "${TARGET}" "${STAGING_DIR}"
+    cp "${LIB}" "${STAGING_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh
