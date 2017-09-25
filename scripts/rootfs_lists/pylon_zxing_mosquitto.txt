@@ -203,7 +203,8 @@ file /etc/app_handler.conf                                  ${SKELETON_DIR}/etc/
 file /usr/application/mosquitto                             ${STAGING_DIR}/usr/local/sbin/mosquitto                                                0755 1000 1000
 file /usr/application/configuration.config                  ${SKELETON_DIR}/etc/configuration.config.d/configuration_mosquitto_mqtt_broker.config  0755 1000 1000
 file /usr/sbin/mosquitto_passwd                             ${STAGING_DIR}/usr/local/bin/mosquitto_passwd                                          0755 1000 1000
-
+file /usr/sbin/zxing                                        ${STAGING_DIR}/zxing
+file /usr/sbin/libzxing.a                                   ${STAGING_DIR}/libzxing.a      
 
 
 ############################
