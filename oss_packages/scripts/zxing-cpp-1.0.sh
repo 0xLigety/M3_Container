@@ -35,9 +35,9 @@ configure()
     cd "${PKG_BUILD_DIR}"
     mkdir "build"
     cd "build"
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --disable-largefile --disable-nls --disable-rpath --disable-browser --disable-extra --disable-libmagic --disable-mouse --disable-speller --disable-glibtest --enable-utf8 --disable-help
-
-    cmake . build
+    cmake -DCMAKE_SYSTEM_NAME=LINUX -DCMAKE_SYSTEM_VERSION=1 -DCMAKE_C_COMPILER=armv7a-hardfloat-linux-gcc -DCMAKE_CXX_COMPILER=armv7a-hardfloat-linux-g++
+          -DCMAKE_FIND_ROOT_PATH=/usr/armv7a-hardfloat-linux-gnueabi -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY
+          -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY
 }
 
 compile()
