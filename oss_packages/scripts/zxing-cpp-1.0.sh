@@ -55,7 +55,7 @@ compile()
 
 install_staging()
 {
-    cd "${PKG_BUILD_DIR}"
+    cd "${PKG_BUILD_DIR}/build"
     cp "${TARGET}" "${STAGING_DIR}"
     cp "${LIB}" "${STAGING_DIR}"
 }
