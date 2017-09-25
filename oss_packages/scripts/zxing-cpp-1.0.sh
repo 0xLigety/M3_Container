@@ -42,12 +42,13 @@ configure()
     cd "${PKG_BUILD_DIR}"
     mkdir "build"
     cd "build"
-    cmake -G "Linux Makefiles" ..
+    cmake -G "Unix Makefiles" ..
 }
 
 compile()
 {
     cd "${PKG_BUILD_DIR}"
+    cd "build"
     make "${M3_MAKEFLAGS}" || exit_failure "failed to build ${PKG_DIR}"
 }
 
