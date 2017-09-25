@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="zxing-cpp-1.0"
+PKG_DIR="zxing-cpp-master"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.zip"
@@ -35,11 +35,9 @@ configure()
     cd "${PKG_BUILD_DIR}"
     mkdir "build"
     cd "build"
-    cmake -DCMAKE_C_COMPILER=${M3_CROSS_COMPILE}gcc -DCMAKE_C_FLAGS="${CFLAGS} -fPIC -I${STAGING_INCLUDE} -L${STAGING_LIB}" -DCMAKE_AR=${AR} \
-          -DCMAKE_LINKER=${M3_CROSS_COMPILE}ld -DCMAKE_STRIP=${M3_CROSS_COMPILE}strip -DCMAKE_NM=${NM} -DCMAKE_OBJCOPY=${M3_CROSS_COMPILE}objcopy \
-          -DCMAKE_OBJDUMP=${M3_CROSS_COMPILE}objdump -DCMAKE_RANLIB=${RANLIB} \
-          -DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS}" -DCMAKE_EXE_LINKER_FLAGS="${M3_LDFLAGS}" -DCMAKE_MODULE_LINKER_FLAGS="${M3_LDFLAGS}" \
-          -DPAHO_WITH_SSL=ON -DCMAKE_INSTALL_PREFIX="" ..
+    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --disable-largefile --disable-nls --disable-rpath --disable-browser --disable-extra --disable-libmagic --disable-mouse --disable-speller --disable-glibtest --enable-utf8 --disable-help
+
+    cmake . build
 }
 
 compile()
