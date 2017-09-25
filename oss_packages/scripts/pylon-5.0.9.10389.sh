@@ -30,6 +30,13 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
+    
+    tar -C /opt -xzf pylonSDK*.tar.gz
+}
+
+compile()
+{
+    cd "${PKG_SRC_DIR}"
     export CFLAGS="${M3_CFLAGS}"
     export LDFLAGS="${M3_LDFLAGS}"
     export TARGET_ARCH="-march=armv7-a"
@@ -40,33 +47,13 @@ configure()
     export LD="armv7a-hardfloat-linux-gnueabi-ld"
     export CC_host="gcc"
     export CXX_host="g++"
-    tar -C /opt -xzf pylonSDK*.tar.gz
-}
-
-compile()
-{
-    copy_overlay
-    cd "${PKG_BUILD_DIR}"
-    # export CROSS_COMPILE="${M3_CROSS_COMPILE}"
-    # work around undefined yywrap error, cuz YFLAGS=--noyywrap didn't help
-    touch conf/pam_conv1/pam_conv_l.o
-    touch conf/pam_conv1/pam_conv_y.o
-    touch conf/pam_conv1/pam_conv1
-    touch doc/specs/parse_l.o doc/specs/parse_y.o
-    echo -e '#!/bin/sh\ntrue' > doc/specs/padout
-    chmod +x doc/specs/padout
-    make ${M3_MAKEFLAGS} CROSS_COMPILE="${M3_CROSS_COMPILE}" || exit_failure "failed to build ${PKG_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" install
-    # libtool is evil and breaks everything
-    rm ${PKG_INSTALL_DIR}/lib/libpam.la
+    make ${M3_MAKEFLAGS}
 }
 
 install_staging()
 {
-    cd "${PKG_BUILD_DIR}"
-    make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
-    # libtool is evil and breaks everything
-    rm ${STAGING_DIR}/lib/libpam.la
+    cd "${PKG_SRC_DIR}"
+    cp 
 }
 
 . ${HELPERSDIR}/call_functions.sh
