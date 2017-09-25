@@ -12,7 +12,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.zip"
 PKG_DOWNLOAD="https://github.com/glassechidna/zxing-cpp/archive/master.zip"
 
 # md5 checksum of archive in dl directory
-#PKG_CHECKSUM="ec635e5c4487d9bf1a12d00322b74038"
+PKG_CHECKSUM="76234c8f68872d35694b417147a70f63"
 
 
 

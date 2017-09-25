@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="pylon-5.0.9.10389"
+PKG_DIR="pylon-5.0.9.10389-86"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
@@ -9,11 +9,11 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 # download link for the sources to be stored in dl directory
 #https://www.baslerweb.com/fp-1496749873/media/downloads/software/pylon_software/pylon-5.0.9.10389-x86.tar.gz
 #https://www.baslerweb.com/fp-1496749873/media/downloads/software/pylon_software/pylon-5.0.9.10389-arm-hf.tar.gz
-PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://www.baslerweb.com/fp-1496749873/media/downloads/software/pylon_software/"
 
 # md5 checksum of archive in dl directory
 #PKG_CHECKSUM="da4b2289b7cfb19583d54e9eaaef1c3a"
-PKG_CHECKSUM="9dc53067556d2dd567808fd509519dd6"
+#PKG_CHECKSUM="9dc53067556d2dd567808fd509519dd6"
 
 
 
@@ -30,12 +30,18 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    # export ac_cv_lib_fl_yywrap=no
-    # export ac_cv_lib_l_yywrap=no
-    # YFLAGS=--noyywrap
     export CFLAGS="${M3_CFLAGS}"
     export LDFLAGS="${M3_LDFLAGS}"
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --disable-selinux --disable-nls --disable-regenerate-docu --disable-nis --enable-db=no --disable-audit --disable-cracklib --disable-lckpwdf --disable-prelude --disable-largefile --disable-pie --prefix="" --disable-rpath --includedir="/include/security"
+    export TARGET_ARCH="-march=armv7-a"
+    export TARGET_TUNE="-mtune=cortex-a8 -mfpu=neon -mfloat-abi=hardfp -mthumb-interwork -mno-thumb"
+    export CC="armv7a-hardfloat-linux-gnueabi-gcc"
+    export CXX="armv7a-hardfloat-linux-gnueabi-g++"
+    export CPP="armv7a-hardfloat-linux-gnueabi-gcc -E"
+    export LD="armv7a-hardfloat-linux-gnueabi-ld"
+    export CC_host="gcc"
+    export CXX_host="g++"
+    export PYLON_ROOT="${PKG_BUILD_DIR}"
+    tar -xvzf ${PKG_ARCHIVE_FILE} /opt/
 }
 
 compile()
