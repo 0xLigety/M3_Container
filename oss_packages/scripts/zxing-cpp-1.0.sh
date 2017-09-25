@@ -59,5 +59,4 @@ install_staging()
     cp "${TARGET}" "${STAGING_DIR}"
     cp "${LIB}" "${STAGING_DIR}"
 }
-
 . ${HELPERSDIR}/call_functions.sh
