@@ -30,13 +30,7 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    
-    tar -C /opt -xzf pylonSDK*.tar.gz
-}
-
-compile()
-{
-    cd "${PKG_SRC_DIR}"
+    tar -C /opt -xzf pylonSDK*.tar.
     export CFLAGS="${M3_CFLAGS}"
     export LDFLAGS="${M3_LDFLAGS}"
     export TARGET_ARCH="-march=armv7-a"
@@ -47,6 +41,13 @@ compile()
     export LD="armv7a-hardfloat-linux-gnueabi-ld"
     export CC_host="gcc"
     export CXX_host="g++"
+    ./configure --target="${M3_TARGET}" --host="${M3_TARGET}"
+}
+
+compile()
+{
+    cd "${PKG_SRC_DIR}"
+    
     make ${M3_MAKEFLAGS}
 }
 
