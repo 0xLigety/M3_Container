@@ -3,7 +3,7 @@
 # name of directory after extracting the archive in working directory
 #PKG_DIR="pylon-5.0.9.10389-x86"
 PKG_DIR="pylon-5.0.9.10389"
-
+TARGET="BaslerGrabSave"
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}-armhf.tar.gz"
 
@@ -55,7 +55,7 @@ compile()
 install_staging()
 {
     cd "${PKG_SRC_DIR}"
-    cp 
+    cp "${TARGET}" "${STAGING_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh

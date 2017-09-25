@@ -148,63 +148,10 @@ slink /var/run                         /tmp/run                                 
 
 # additionally
 
-# web_interface
-file /var/www/localhost/htdocs/web.cgi                      ${STAGING_DIR}/bin/web_interface_mosquitto_mqtt_broker 0755 0 0
-
-# slinks für web.cgi
-slink /var/www/localhost/htdocs/web_s_authentication.cgi    /var/www/localhost/htdocs/web.cgi 0777 0 0
-slink /var/www/localhost/htdocs/web_s_configuration.cgi     /var/www/localhost/htdocs/web.cgi 0777 0 0
-slink /var/www/localhost/htdocs/web_s_info.cgi              /var/www/localhost/htdocs/web.cgi 0777 0 0
-slink /var/www/localhost/htdocs/web_s_log.cgi               /var/www/localhost/htdocs/web.cgi 0777 0 0
-slink /var/www/localhost/htdocs/web_s_network.cgi           /var/www/localhost/htdocs/web.cgi 0777 0 0
-slink /var/www/localhost/htdocs/web_s_overview.cgi          /var/www/localhost/htdocs/web.cgi 0777 0 0
-slink /var/www/localhost/htdocs/web_s_restart.cgi           /var/www/localhost/htdocs/web.cgi 0777 0 0
-
-slink /var/www/localhost/htdocs/web_c_authentication.cgi    /var/www/localhost/htdocs/web.cgi 0777 0 0
-slink /var/www/localhost/htdocs/web_c_configuration.cgi     /var/www/localhost/htdocs/web.cgi 0777 0 0
-slink /var/www/localhost/htdocs/web_c_network.cgi           /var/www/localhost/htdocs/web.cgi 0777 0 0
-slink /var/www/localhost/htdocs/web_c_new_config.cgi        /var/www/localhost/htdocs/web.cgi 0777 0 0
-slink /var/www/localhost/htdocs/web_c_restart_app.cgi       /var/www/localhost/htdocs/web.cgi 0777 0 0
-slink /var/www/localhost/htdocs/web_c_restart_device.cgi    /var/www/localhost/htdocs/web.cgi 0777 0 0
-
-slink /var/www/localhost/htdocs/web_c_lang_de.cgi           /var/www/localhost/htdocs/web.cgi 0777 0 0
-slink /var/www/localhost/htdocs/web_c_lang_en.cgi           /var/www/localhost/htdocs/web.cgi 0777 0 0
-
-# icons
-file /var/www/localhost/htdocs/icons/de.png                 ${SKELETON_DIR}/var/web/icons/de.png                        0755 0 0
-file /var/www/localhost/htdocs/icons/gb.png                 ${SKELETON_DIR}/var/web/icons/gb.png                        0755 0 0
-file /var/www/localhost/htdocs/icons/top_bar.jpg            ${SKELETON_DIR}/var/web/icons/top_bar.jpg                   0755 0 0
-file /var/www/localhost/htdocs/icons/wait.gif               ${SKELETON_DIR}/var/web/icons/wait.gif                      0755 0 0
-file /var/www/localhost/htdocs/icons/favicon.png            ${SKELETON_DIR}/var/web/icons/favicon.png                   0755 0 0
-file /var/www/localhost/htdocs/icons/gear_wheel.gif         ${SKELETON_DIR}/var/web/icons/gear_wheel.gif                0755 0 0
-
-# language files
-file /var/www/localhost/htdocs/doc/e                        ${SKELETON_DIR}/var/web/mosquitto_mqtt_broker/e             0755 0 0
-file /var/www/localhost/htdocs/doc/d                        ${SKELETON_DIR}/var/web/mosquitto_mqtt_broker/d             0755 0 0
-file /usr/application/settings/lang                         ${SKELETON_DIR}/var/web/lang                                0755 1001 1001
-
-# html docs
-file /var/www/localhost/htdocs/doc/e_info.html              ${SKELETON_DIR}/var/web/mosquitto_mqtt_broker/e_info.html          0755 0 0
-file /var/www/localhost/htdocs/doc/e_overview.html          ${SKELETON_DIR}/var/web/mosquitto_mqtt_broker/e_overview.html      0755 0 0
-file /var/www/localhost/htdocs/doc/e_support.html           ${SKELETON_DIR}/var/web/mosquitto_mqtt_broker/e_support.html       0755 0 0
-file /var/www/localhost/htdocs/doc/d_info.html              ${SKELETON_DIR}/var/web/mosquitto_mqtt_broker/d_info.html          0755 0 0
-file /var/www/localhost/htdocs/doc/d_overview.html          ${SKELETON_DIR}/var/web/mosquitto_mqtt_broker/d_overview.html      0755 0 0
-file /var/www/localhost/htdocs/doc/d_support.html           ${SKELETON_DIR}/var/web/mosquitto_mqtt_broker/d_support.html       0755 0 0
-
-# css-styles
-file /var/www/localhost/htdocs/style.css                    ${SKELETON_DIR}/var/web/css/style.css                                   0755 0 0
-file /var/www/localhost/htdocs/style_fw.css                 ${SKELETON_DIR}/var/web/css/style_fw.css                                0755 0 0
-
-# app_handler
-file /usr/sbin/app_handler                                  ${STAGING_DIR}/bin/app_handler-1.0                                                     0755 0 0
-file /etc/app_handler.conf                                  ${SKELETON_DIR}/etc/app_handler.conf.d/app_handler_mosquitto_mqtt_broker.conf          0755 0 0
-
 # application
-file /usr/application/mosquitto                             ${STAGING_DIR}/usr/local/sbin/mosquitto                                                0755 1000 1000
-file /usr/application/configuration.config                  ${SKELETON_DIR}/etc/configuration.config.d/configuration_mosquitto_mqtt_broker.config  0755 1000 1000
-file /usr/sbin/mosquitto_passwd                             ${STAGING_DIR}/usr/local/bin/mosquitto_passwd                                          0755 1000 1000
-file /usr/sbin/zxing                                        ${STAGING_DIR}/zxing
-file /usr/sbin/libzxing.a                                   ${STAGING_DIR}/libzxing.a      
+file /usr/sbin/zxing                                        ${STAGING_DIR}/zxing        0755 0 0
+file /usr/sbin/libzxing.a                                   ${STAGING_DIR}/libzxing.a       0755 0 0
+file /usr/sbin/BaslerGrabSave                               ${STAGING_DIR}/BaslerGrabSave       0755 0 0 
 
 
 ############################
@@ -254,15 +201,6 @@ file /usr/local/lib/mod_trigger_b4_dl.so   ${STAGING_DIR}/usr/local/lib/mod_trig
 file /usr/local/lib/mod_userdir.so         ${STAGING_DIR}/usr/local/lib/mod_userdir.so          0755 0 0
 file /usr/local/lib/mod_usertrack.so       ${STAGING_DIR}/usr/local/lib/mod_usertrack.so        0755 0 0
 file /usr/local/lib/mod_webdav.so          ${STAGING_DIR}/usr/local/lib/mod_webdav.so           0755 0 0
-
-############################
-# sqlite3 files            #
-############################
-
-file /bin/sqlite3                      ${STAGING_DIR}/bin/sqlite3                    0755 0 0
-file /lib/libsqlite3.so.0.8.6          ${STAGING_DIR}/lib/libsqlite3.so.0.8.6        0755 0 0
-slink /lib/libsqlite3.so               libsqlite3.so.0.8.6                           0777 0 0
-slink /lib/libsqlite3.so.0             libsqlite3.so.0.8.6                           0777 0 0
 
 ##################
 # timzeone files #
