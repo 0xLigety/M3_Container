@@ -29,7 +29,7 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
 configure()
 {
-    cd "${PKG_BUILD_DIR}"
+    cd "${PKG_SRC_DIR}"
     tar -C /opt -xzf pylonSDK*.tar.
     export CFLAGS="${M3_CFLAGS}"
     export LDFLAGS="${M3_LDFLAGS}"
