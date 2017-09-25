@@ -30,14 +30,19 @@ configure()
 {
     export CFLAGS="${M3_CFLAGS}"
     export LDFLAGS="${M3_LDFLAGS}"
-    export M3_CROSS_COMPILE="/usr/bin/armv7a-hardfloat-linux-gnueabi-"
+    export TARGET_ARCH="-march=armv7-a"
+    export TARGET_TUNE="-mtune=cortex-a8 -mfpu=neon -mfloat-abi=hardfp -mthumb-interwork -mno-thumb"
+    export CC="armv7a-hardfloat-linux-gnueabi-gcc"
+    export CXX="armv7a-hardfloat-linux-gnueabi-g++"
+    export CPP="armv7a-hardfloat-linux-gnueabi-gcc -E"
+    export LD="armv7a-hardfloat-linux-gnueabi-ld"
+    export CC_host="gcc"
+    export CXX_host="g++"
 
     cd "${PKG_BUILD_DIR}"
     mkdir "build"
     cd "build"
-    cmake -DCMAKE_SYSTEM_NAME=LINUX -DCMAKE_SYSTEM_VERSION=1 -DCMAKE_C_COMPILER=armv7a-hardfloat-linux-gcc -DCMAKE_CXX_COMPILER=armv7a-hardfloat-linux-g++
-          -DCMAKE_FIND_ROOT_PATH=/usr/armv7a-hardfloat-linux-gnueabi -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY
-          -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY
+    cmake -G "Linux Makefiles" ..
 }
 
 compile()
