@@ -4,7 +4,7 @@
 PKG_DIR="zxing-cpp-1.0"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.zip"
 
 # download link for the sources to be stored in dl directory
 # https://github.com/glassechidna/zxing-cpp.git
