@@ -2,10 +2,10 @@
 
 # name of directory after extracting the archive in working directory
 #PKG_DIR="pylon-5.0.9.10389-x86"
-PKG_DIR="pylon-5.0.9.10389-arm-hf"
+PKG_DIR="pylon-5.0.9.10389"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}-armhf.tar.gz"
 
 # download link for the sources to be stored in dl directory
 #https://www.baslerweb.com/fp-1496749873/media/downloads/software/pylon_software/pylon-5.0.9.10389-x86.tar.gz
@@ -31,7 +31,7 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    tar -C /opt -xzf pylonSDK*.tar.
+    tar -C /opt -xzf pylonSDK*.tar.gz
     
 }
 
