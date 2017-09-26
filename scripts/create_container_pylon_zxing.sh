@@ -20,7 +20,7 @@ PACKAGES="${PACKAGES} lighttpd-1.4.39.sh"
 #PACKAGES="${PACKAGES} web_interface_mosquitto_mqtt_broker-1.0.sh"
 PACKAGES="${PACKAGES} app_handler-1.0.sh"
 PACKAGES="${PACKAGES} c-ares-1.12.0.sh"
-#PACKAGES="${PACKAGES} mosquitto-1.4.12.sh"
+PACKAGES="${PACKAGES} mosquitto-1.4.12.sh"
 ##new 
 #PACKAGES="${PACKAGES} web_interface_pylon_zxing_mosquitto_mqtt-1.0.sh" 
 PACKAGES="${PACKAGES} pylon-5.0.9.10389.sh"

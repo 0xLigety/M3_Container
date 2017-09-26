@@ -146,13 +146,18 @@ slink /var/lock                        /tmp/lock                                
 slink /var/run                         /tmp/run                                      0777 0 0
 
 
+
 # additionally
 
-# application
-file /usr/sbin/zxing                                        ${STAGING_DIR}/zxing        0755 0 0
-file /usr/sbin/libzxing.a                                   ${STAGING_DIR}/libzxing.a       0755 0 0
-file /usr/sbin/BaslerGrabSave                               ${STAGING_DIR}/BaslerGrabSave       0755 0 0 
-
+# application                                                    0755 1000 1000
+file /usr/application/mosquitto_pub                         ${STAGING_DIR}/usr/local/sbin/mosquitto_pub                                                 0755 1000 1000
+file /usr/application/zxing                                 ${STAGING_DIR}/zxing         0755 1000 1000
+file /usr/application/libzxing.a                            ${STAGING_DIR}/libzxing.a       0755 0 0
+file /usr/application/BaslerGrabSave                        ${STAGING_DIR}/BaslerGrabSave        0755 1000 1000 
+file /usr/lib/libpylonbase.so                               ${STAGING_DIR}/lib/libpylonbase.so     0755 0 0
+file /usr/lib/libpylonutility.so                            ${STAGING_DIR}/lib/libpylonutility.so     0755 0 0
+file /usr/lib/GenApi_gcc_v3_0_Basler_pylon_v5_0.so          ${STAGING_DIR}/lib/GenApi_gcc_v3_0_Basler_pylon_v5_0.so     0755 0 0
+file /usr/lib/GCBase_gcc_v3_0_Basler_pylon_v5_0.so          ${STAGING_DIR}/lib/GCBase_gcc_v3_0_Basler_pylon_v5_0.so     0755 0 0
 
 ############################
 # openssl files            #
