@@ -77,7 +77,7 @@ slink /bin/dbclient                   dropbearmulti                             
 file /bin/init                        ${STAGING_DIR}/sbin/finit                      0755 0 0
 file /bin/initctl                     ${STAGING_DIR}/sbin/initctl                    0755 0 0
 file /bin/metalog                     ${STAGING_DIR}/sbin/metalog                    0755 0 0
-file /bin/start_net.sh                ${SKELETON_DIR}/bin/start_net.sh               0755 0 0
+file /bin/start_net.sh                ${SKELETON_DIR}/bin/start_net_vpn88.sh               0755 0 0
 file /bin/reboot                      ${STAGING_DIR}/sbin/reboot                     0755 0 0
 file /bin/compress_log.sh             ${SKELETON_DIR}/bin/compress_log.sh            0755 0 0
 file /bin/console                     ${STAGING_DIR}/usr/bin/console                 0755 0 0
@@ -93,7 +93,7 @@ file /etc/metalog.conf                ${SKELETON_DIR}/etc/metalog.conf.d/metalog
 file /etc/nsswitch.conf               ${SKELETON_DIR}/etc/nsswitch.conf              0644 0 0
 file /etc/passwd                      ${SKELETON_DIR}/etc/passwd.d/passwd_mosquitto_mqtt_broker                    0644 0 0
 file /etc/profile                     ${SKELETON_DIR}/etc/profile                    0644 0 0
-file /etc/resolv.conf                 ${SKELETON_DIR}/etc/resolv.conf                0644 0 0
+file /etc/resolv.conf                 ${SKELETON_DIR}/etc/resolv_vpn88.conf                0644 0 0
 file /etc/shadow                      ${SKELETON_DIR}/etc/shadow                     0640 0 0
 file /etc/shells                      ${SKELETON_DIR}/etc/shells                     0644 0 0
 file /etc/protocols                   ${SKELETON_DIR}/etc/protocols                  0644 0 0
@@ -148,12 +148,20 @@ slink /var/run                         /tmp/run                                 
 
 
 # additionally
+# app_handler
+file /usr/sbin/app_handler                       ${STAGING_DIR}/bin/app_handler-1.0                                                 0755 0 0
+file /etc/app_handler.conf                       ${SKELETON_DIR}/etc/app_handler.conf.d/app_handler_basler_qr_to_mqtt.conf     0755 0 0
+
 
 # application                                                   
-file /usr/application/mosquitto_pub                         ${STAGING_DIR}/usr/local/sbin/mosquitto_pub      0755 1000 1000
+file /usr/application/mosquitto_pub                         ${STAGING_DIR}/usr/local/bin/mosquitto_pub      0755 1000 1000
 file /usr/application/zxing                                 ${STAGING_DIR}/zxing         0755 1000 1000
 file /usr/application/libzxing.a                            ${STAGING_DIR}/libzxing.a       0755 0 0
 file /usr/application/BaslerGrabSave                        ${STAGING_DIR}/BaslerGrabSave        0755 1000 1000 
+
+# libraries
+file /lib/libmosquitto.so.1                                 ${STAGING_DIR}/usr/local/lib/libmosquitto.so.1                  0755 0 0
+slink /lib/libmosquitto.so                                  /lib/libmosquitto.so.1 
 file /usr/lib/libpylonbase-5.0.9.so                         ${STAGING_DIR}/lib/libpylonbase-5.0.9.so     0755 0 0
 slink /usr/lib/libpylonbase.so                              /usr/lib/libpylonbase-5.0.9.so     0777 0 0
 file /usr/lib/libpylonutility-5.0.9.so                      ${STAGING_DIR}/lib/libpylonutility-5.0.9.so     0755 0 0
