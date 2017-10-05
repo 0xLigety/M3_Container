@@ -7,6 +7,6 @@ TOPIC="/BaslerQR"
 MESSAGE="Test"
 
 mkdir /usr/application/data
-./usr/application/BaslerGrabSave ${CAMERA}
-MESSAGE = "$(./usr/application/zxing GrabbedImage.png)"
-./usr/application/mosquitto_pub -h ${ADDRESS} -p ${PORT} -t ${TOPIC} -m "${MESSAGE}"
+/usr/application/BaslerGrabSave ${CAMERA}
+MESSAGE= "$(/usr/application/zxing GrabbedImage.png)"
+/usr/application/mosquitto_pub -h ${ADDRESS} -p ${PORT} -t ${TOPIC} -m "${MESSAGE}"

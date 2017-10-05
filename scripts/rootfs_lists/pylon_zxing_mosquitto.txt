@@ -162,13 +162,21 @@ file /usr/application/workflow.sh                           ${SKELETON_DIR}/usr/
 
 # libraries
 file /lib/libmosquitto.so.1                                 ${STAGING_DIR}/usr/local/lib/libmosquitto.so.1                  0755 0 0
-slink /lib/libmosquitto.so                                  /lib/libmosquitto.so.1 
-file /lib/libpylonbase-5.0.9.so                         ${STAGING_DIR}/lib/libpylonbase-5.0.9.so     0755 0 0
-slink /lib/libpylonbase.so                              /usr/lib/libpylonbase-5.0.9.so     0777 0 0
-file /lib/libpylonutility-5.0.9.so                      ${STAGING_DIR}/lib/libpylonutility-5.0.9.so     0755 0 0
-slink /lib/libpylonutility.so                           /usr/lib/libpylonutility-5.0.9.so     0777 0 0
-file /lib/libpylon_TL_gige-5.0.9.so                     ${STAGING_DIR}/lib/libpylon_TL_gige-5.0.9.so     0755 0 0
-slink /lib/libpylon_TL_gige.so                          /usr/lib/libpylon_TL_gige-5.0.9.so     0777 0 0
+slink /lib/libmosquitto.so                                  /lib/libmosquitto.so.1
+file /lib/libcares.so.2.2.0                                 ${STAGING_DIR}/lib/libcares.so.2.2.0                            0755 0 0
+slink /lib/libcares.so.2                                    /lib/libcares.so.2.2.0                                          0755 0 0
+slink /lib/libcares.so                                      /lib/libcares.so.2.2.0                                          0755 0 0
+file /lib/libpylonbase-5.0.9.so                             ${STAGING_DIR}/lib/libpylonbase-5.0.9.so     0755 0 0
+slink /lib/libpylonbase.so                                  /usr/lib/libpylonbase-5.0.9.so     0777 0 0
+file /lib/libpylonutility-5.0.9.so                          ${STAGING_DIR}/lib/libpylonutility-5.0.9.so     0755 0 0
+slink /lib/libpylonutility.so                               /usr/lib/libpylonutility-5.0.9.so     0777 0 0
+file /lib/libpylon_TL_gige-5.0.9.so                         ${STAGING_DIR}/lib/libpylon_TL_gige-5.0.9.so     0755 0 0
+slink /lib/libpylon_TL_gige.so                              /usr/lib/libpylon_TL_gige-5.0.9.so     0777 0 0
+file /lib/libGenApi_gcc_v3_0_Basler_pylon_v5_0.so           ${STAGING_DIR}/lib/libGenApi_gcc_v3_0_Basler_pylon_v5_0.so     0755 0 0
+file /lib/libGCBase_gcc_v3_0_Basler_pylon_v5_0.so           ${STAGING_DIR}/lib/libGCBase_gcc_v3_0_Basler_pylon_v5_0.so     0755 0 0
+
+
+
 
 ############################
 # openssl files            #
