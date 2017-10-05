@@ -20,8 +20,8 @@ configure()
     copy_overlay
     cd "${PKG_BUILD_DIR}"
 
-    ln -sf configuration_mqtt_broker.c configuration.c
-    ln -sf settings_defines_mqtt_broker.h settings_defines.h
+    ln -sf configuration_basler_qr_mqtt.c configuration.c
+    ln -sf settings_defines_basler_qr_mqtt.h settings_defines.h
 }
 
 compile()

@@ -87,7 +87,7 @@ file /etc/banner.txt                  ${SKELETON_DIR}/etc/banner.txt            
 file /etc/group                       ${SKELETON_DIR}/etc/group.d/group_mosquitto_mqtt_broker                      0644 0 0
 file /etc/hosts                       ${SKELETON_DIR}/etc/hosts                      0644 0 0
 file /etc/inittab                     ${SKELETON_DIR}/etc/inittab                    0644 0 0
-file /etc/finit.conf                  ${SKELETON_DIR}/etc/finit.conf.d/finit_mosquitto_mqtt_broker.conf            0644 0 0
+file /etc/finit.conf                  ${SKELETON_DIR}/etc/finit.conf.d/finit_basler_qr_mqtt.conf            0644 0 0
 file /etc/mcip.conf                   ${SKELETON_DIR}/etc/mcip.conf                  0644 0 0
 file /etc/metalog.conf                ${SKELETON_DIR}/etc/metalog.conf.d/metalog_mosquitto_mqtt_broker.conf        0644 0 0
 file /etc/nsswitch.conf               ${SKELETON_DIR}/etc/nsswitch.conf              0644 0 0
@@ -157,7 +157,8 @@ file /etc/app_handler.conf                       ${SKELETON_DIR}/etc/app_handler
 file /usr/application/mosquitto_pub                         ${STAGING_DIR}/usr/local/bin/mosquitto_pub      0755 1000 1000
 file /usr/application/zxing                                 ${STAGING_DIR}/zxing         0755 1000 1000
 file /usr/application/libzxing.a                            ${STAGING_DIR}/libzxing.a       0755 0 0
-file /usr/application/BaslerGrabSave                        ${STAGING_DIR}/BaslerGrabSave        0755 1000 1000 
+file /usr/application/BaslerGrabSave                        ${STAGING_DIR}/BaslerGrabSave        0755 1000 1000
+file /usr/application/workflow.sh                           ${STAGING_DIR}/usr/scripts/basler_qr_zxing_mqtt.sh    0755 1000 1000 
 
 # libraries
 file /lib/libmosquitto.so.1                                 ${STAGING_DIR}/usr/local/lib/libmosquitto.so.1                  0755 0 0
@@ -181,7 +182,7 @@ file /lib/libcrypto.so.1.0.0           ${STAGING_DIR}/lib/libcrypto.so.1.0.0    
 # lighttpd files #
 ##################
 file /bin/lighttpd                         ${STAGING_DIR}/usr/local/sbin/armv7a-hardfloat-linux-gnueabi-lighttpd           0755 0 0
-file /etc/lighttpd.conf                    ${SKELETON_DIR}/etc/lighttpd.conf.d/lighttpd_mosquitto_mqtt_broker.conf         0644 0 0
+file /etc/lighttpd.conf                    ${SKELETON_DIR}/etc/lighttpd.conf.d/lighttpd_basler_qr_mqtt.conf         0644 0 0
 file /etc/cgi.conf                         ${SKELETON_DIR}/etc/lighttpd.conf.d/lighttpd_cgi.conf                           0644 0 0
 file /usr/application/lighttpd_login       ${SKELETON_DIR}/etc/lighttpd.conf.d/lighttpd_login                              0755 1001 1001
 file /usr/local/lib/mod_access.so          ${STAGING_DIR}/usr/local/lib/mod_access.so           0755 0 0
