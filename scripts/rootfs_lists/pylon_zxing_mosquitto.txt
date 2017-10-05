@@ -158,17 +158,17 @@ file /usr/application/mosquitto_pub                         ${STAGING_DIR}/usr/l
 file /usr/application/zxing                                 ${STAGING_DIR}/zxing         0755 1000 1000
 file /usr/application/libzxing.a                            ${STAGING_DIR}/libzxing.a       0755 0 0
 file /usr/application/BaslerGrabSave                        ${STAGING_DIR}/BaslerGrabSave        0755 1000 1000
-file /usr/application/workflow.sh                           ${STAGING_DIR}/usr/scripts/basler_qr_zxing_mqtt.sh    0755 1000 1000 
+file /usr/application/workflow.sh                           ${SKELETON_DIR}/usr/scripts/basler_qr_zxing_mqtt.sh    0755 1000 1000 
 
 # libraries
 file /lib/libmosquitto.so.1                                 ${STAGING_DIR}/usr/local/lib/libmosquitto.so.1                  0755 0 0
 slink /lib/libmosquitto.so                                  /lib/libmosquitto.so.1 
-file /usr/lib/libpylonbase-5.0.9.so                         ${STAGING_DIR}/lib/libpylonbase-5.0.9.so     0755 0 0
-slink /usr/lib/libpylonbase.so                              /usr/lib/libpylonbase-5.0.9.so     0777 0 0
-file /usr/lib/libpylonutility-5.0.9.so                      ${STAGING_DIR}/lib/libpylonutility-5.0.9.so     0755 0 0
-slink /usr/lib/libpylonutility.so                           /usr/lib/libpylonutility-5.0.9.so     0777 0 0
-file /usr/lib/libpylon_TL_gige-5.0.9.so                     ${STAGING_DIR}/lib/libpylon_TL_gige-5.0.9.so     0755 0 0
-slink /usr/lib/libpylon_TL_gige.so                          /usr/lib/libpylon_TL_gige-5.0.9.so     0777 0 0
+file /lib/libpylonbase-5.0.9.so                         ${STAGING_DIR}/lib/libpylonbase-5.0.9.so     0755 0 0
+slink /lib/libpylonbase.so                              /usr/lib/libpylonbase-5.0.9.so     0777 0 0
+file /lib/libpylonutility-5.0.9.so                      ${STAGING_DIR}/lib/libpylonutility-5.0.9.so     0755 0 0
+slink /lib/libpylonutility.so                           /usr/lib/libpylonutility-5.0.9.so     0777 0 0
+file /lib/libpylon_TL_gige-5.0.9.so                     ${STAGING_DIR}/lib/libpylon_TL_gige-5.0.9.so     0755 0 0
+slink /lib/libpylon_TL_gige.so                          /usr/lib/libpylon_TL_gige-5.0.9.so     0777 0 0
 
 ############################
 # openssl files            #
