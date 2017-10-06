@@ -1,6 +1,7 @@
 // Include files to use the PYLON API.
 #include <pylon/PylonIncludes.h>
 #include <pylon/gige/PylonGigEIncludes.h>
+#include <pylon/gige/BaslerGigEInstantCamera.h>
 
 // Namespace for using pylon objects.
 using namespace Pylon;
@@ -27,10 +28,19 @@ int main(int argc, char *argv[])
         // This smart pointer will receive the grab result data.
         CGrabResultPtr ptrGrabResult;
         CTlFactory &TlFactory = CTlFactory::GetInstance();
-        CBaslerGigEDeviceInfo di;
-        di.SetIpAddress(argv[1]);
-        IPylonDevice *device = TlFactory.CreateDevice(di);
-        CBaslerGigEInstantCamera Camera(device);
+        ITransportLayer* pTl = TlFactory.CreateTl( CBaslerGigECamera::DeviceClass() );
+
+        DeviceInfoList_t lstDevices;
+        pTl->EnumerateDevices( lstDevices );
+        if ( lstDevices.empty() ) {
+            cerr <<  "No devices found" << endl;
+            exit(1);
+        }
+        IPylonDevice* pDevice = pTl->CreateDevice( lstDevices[0] );
+        //CBaslerGigEDeviceInfo di;
+        //di.SetIpAddress( "192.168.0.101");
+        //IPylonDevice *device = TlFactory.CreateDevice(di);
+        CBaslerGigEInstantCamera Camera(pDevice);
 
         if (Camera.GrabOne(1000, ptrGrabResult))
         {
