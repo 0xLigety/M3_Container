@@ -3,7 +3,7 @@
 # name of directory after extracting the archive in working directory
 PKG_DIR="web_interface-1.0"
 
-TARGET="web_interface_mosquitto_mqtt_broker"
+TARGET="web_interface_basler_qr_mqtt"
 
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
