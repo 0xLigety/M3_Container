@@ -1,6 +1,7 @@
 // Include files to use the PYLON API.
 #include <pylon/PylonIncludes.h>
 #include <pylon/gige/PylonGigEIncludes.h>
+#include <pylon/gige/BaslerGigECamera.h>
 #include <pylon/gige/BaslerGigEInstantCamera.h>
 
 // Namespace for using pylon objects.
