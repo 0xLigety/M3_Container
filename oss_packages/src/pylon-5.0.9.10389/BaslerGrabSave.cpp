@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
         CBaslerGigEDeviceInfo di;
         di.SetIpAddress(argv[1]);
         IPylonDevice *device = TlFactory.CreateDevice(di);
-        CInstantCamera Camera(device);
+        CBaslerGigEInstantCamera Camera(device);
 
         if (Camera.GrabOne(1000, ptrGrabResult))
         {
