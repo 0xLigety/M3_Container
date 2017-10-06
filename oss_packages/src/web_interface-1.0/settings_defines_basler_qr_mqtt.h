@@ -1,0 +1,16 @@
+#ifndef SETTINGS_DEFINES_H
+#define SETTINGS_DEFINES_H
+
+#define CONFIG_DELIMITER				"="
+
+#define LANGUAGE_SWITCH_ON				1	/* 0: disabled 1: enabled */
+
+#define SETTINGS_COUNT					5
+
+#define SETTING_POLLING_TIME				0
+#define SETTING_BASLER_ADDRESS				1
+#define SETTING_MOSQUITTO_ADDRESS			7
+#define SETTING_MOSQUITTO_PORT				8
+#define SETTING_MOSQUITTO_TOPIC				9
+
+#endif
