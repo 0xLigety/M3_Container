@@ -56,7 +56,7 @@ install_staging()
 {
     cd "${PKG_SRC_DIR}"
     cp "${TARGET}" "${STAGING_DIR}"
-    #cp *.so "${STAGING_DIR}/lib/"
+    cp /opt/pylon5/lib/*.so "${STAGING_DIR}/lib/"
 }
 
 . ${HELPERSDIR}/call_functions.sh

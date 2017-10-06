@@ -220,6 +220,8 @@ file /lib/libpylonbase-5.0.9.so                             ${STAGING_DIR}/lib/l
 slink /lib/libpylonbase.so                                  /usr/lib/libpylonbase-5.0.9.so     0777 0 0
 file /lib/libpylonutility-5.0.9.so                          ${STAGING_DIR}/lib/libpylonutility-5.0.9.so     0755 0 0
 slink /lib/libpylonutility.so                               /usr/lib/libpylonutility-5.0.9.so     0777 0 0
+file /lib/libgxapi-5.0.9.so                                 ${STAGING_DIR}/lib/libgxapi-5.0.9.so     0755 0 0
+slink /lib/libgxapi.so                                      /usr/lib/libgxapi-5.0.9.so     0777 0 0
 file /lib/libpylon_TL_gige-5.0.9.so                         ${STAGING_DIR}/lib/libpylon_TL_gige-5.0.9.so     0755 0 0
 slink /lib/libpylon_TL_gige.so                              /usr/lib/libpylon_TL_gige-5.0.9.so     0777 0 0
 file /lib/libGenApi_gcc_v3_0_Basler_pylon_v5_0.so           ${STAGING_DIR}/lib/libGenApi_gcc_v3_0_Basler_pylon_v5_0.so     0755 0 0
