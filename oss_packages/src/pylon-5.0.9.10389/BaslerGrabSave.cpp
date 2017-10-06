@@ -31,16 +31,17 @@ int main(int argc, char *argv[])
         CTlFactory &TlFactory = CTlFactory::GetInstance();
         ITransportLayer* pTl = TlFactory.CreateTl( CBaslerGigECamera::DeviceClass() );
 
-        DeviceInfoList_t lstDevices;
-        pTl->EnumerateDevices( lstDevices );
-        if ( lstDevices.empty() ) {
-            cerr <<  "No devices found" << endl;
-            exit(1);
-        }
-        IPylonDevice* pDevice = pTl->CreateDevice( lstDevices[0] );
-        //CBaslerGigEDeviceInfo di;
-        //di.SetIpAddress( "192.168.0.101");
+        //DeviceInfoList_t lstDevices;
+        //pTl->EnumerateDevices( lstDevices );
+        //if ( lstDevices.empty() ) {
+        //    cerr <<  "No devices found" << endl;
+        //    exit(1);
+       //}
+        //IPylonDevice* pDevice = pTl->CreateDevice( lstDevices[0] );
+        CBaslerGigEDeviceInfo di;
+        di.SetIpAddress("192.168.88.7");
         //IPylonDevice *device = TlFactory.CreateDevice(di);
+        IPylonDevice* pDevice = pTl->CreateDevice(di);
         CBaslerGigEInstantCamera Camera(pDevice);
 
         if (Camera.GrabOne(1000, ptrGrabResult))
