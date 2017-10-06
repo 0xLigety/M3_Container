@@ -176,6 +176,13 @@ slink /lib/libpylon_TL_gige.so                              /usr/lib/libpylon_TL
 file /lib/libGenApi_gcc_v3_0_Basler_pylon_v5_0.so           ${STAGING_DIR}/lib/libGenApi_gcc_v3_0_Basler_pylon_v5_0.so     0755 0 0
 file /lib/libGCBase_gcc_v3_0_Basler_pylon_v5_0.so           ${STAGING_DIR}/lib/libGCBase_gcc_v3_0_Basler_pylon_v5_0.so     0755 0 0
 file /lib/libLog_gcc_v3_0_Basler_pylon_v5_0.so              ${STAGING_DIR}/lib/libLog_gcc_v3_0_Basler_pylon_v5_0.so        0755 0 0
+file /lib/libXmlParser_gcc_v3_0_Basler_pylon_v5_0.so        ${STAGING_DIR}/lib/libXmlParser_gcc_v3_0_Basler_pylon_v5_0.so        0755 0 0
+file /lib/libMathParser_gcc_v3_0_Basler_pylon_v5_0.so       ${STAGING_DIR}/lib/libMathParser_gcc_v3_0_Basler_pylon_v5_0.so        0755 0 0
+file /lib/libFirmwareUpdate_gcc_v3_0_Basler_pylon_v5_0.so   ${STAGING_DIR}/lib/libFirmwareUpdate_gcc_v3_0_Basler_pylon_v5_0.so        0755 0 0
+file /lib/libNodeMapData_gcc_v3_0_Basler_pylon_v5_0.so      ${STAGING_DIR}/lib/libNodeMapData_gcc_v3_0_Basler_pylon_v5_0.so        0755 0 0
+
+
+
 
 
 ############################
