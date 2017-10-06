@@ -30,7 +30,7 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
 configure()
 {
-    cd "${PKG_BUILD_DIR}"
+    cd "${PKG_BUILD_DIR}-armhf"
     tar -C /opt -xzf pylonSDK*.tar.gz
     
 }

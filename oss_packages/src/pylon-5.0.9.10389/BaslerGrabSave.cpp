@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
        //}
         //IPylonDevice* pDevice = pTl->CreateDevice( lstDevices[0] );
         CBaslerGigEDeviceInfo di;
-        di.SetIpAddress("192.168.88.7");
+        di.SetIpAddress(argv[1]);
         //IPylonDevice *device = TlFactory.CreateDevice(di);
         IPylonDevice* pDevice = pTl->CreateDevice(di);
         CBaslerGigEInstantCamera Camera(pDevice);
