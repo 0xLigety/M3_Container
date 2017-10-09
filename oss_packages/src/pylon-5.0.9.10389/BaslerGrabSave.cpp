@@ -59,11 +59,7 @@ int main(int argc, char *argv[])
             if (ptrGrabResult->GrabSucceeded())
             {
                 // Access the image data.
-                cout << "SizeX: " << ptrGrabResult->GetWidth() << endl;
-                cout << "SizeY: " << ptrGrabResult->GetHeight() << endl;
-                const uint8_t *pImageBuffer = (uint8_t *) ptrGrabResult->GetBuffer();
-                cout << "Gray value of first pixel: " << (uint32_t) pImageBuffer[0] << endl << endl;
-
+                cout << "Grab successful" << ptrGrabResult->GetWidth() << endl;
             CImagePersistence::Save(ImageFileFormat_Png, "GrabbedImage.png", ptrGrabResult);
             break;
             }
@@ -82,7 +78,7 @@ int main(int argc, char *argv[])
         PylonTerminate(); 
         cerr << "Could not grab an image: " << endl
              << e.GetDescription() << endl;
-        exitcode = 1;
+        exitCode = 1;
     }
 
     PylonTerminate(); 
