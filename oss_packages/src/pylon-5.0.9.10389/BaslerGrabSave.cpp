@@ -50,12 +50,12 @@ int main(int argc, char *argv[])
         // Open the camera.
         Camera.Open();
 
-        Camera.StartGrabbing(1)
+        Camera.StartGrabbing(1);
 
-        while ( Camera.IsGrabbing())
+        while(Camera.IsGrabbing())
         {
             // Wait for an image and then retrieve it. A timeout of 5000 ms is used.
-            Camera.RetrieveResult( 3000, ptrGrabResult, TimeoutHandling_ThrowException);
+            Camera.RetrieveResult(5000, ptrGrabResult, TimeoutHandling_ThrowException);
 
             // Image grabbed successfully?
             if (ptrGrabResult->GrabSucceeded())
@@ -67,16 +67,16 @@ int main(int argc, char *argv[])
                 cout << "Gray value of first pixel: " << (uint32_t) pImageBuffer[0] << endl << endl;
 
             CImagePersistence::Save(ImageFileFormat_Png, "GrabbedImage.png", ptrGrabResult);
-
+            Camera.Close();
             }
             else
             {
                 cout << "Error: " << ptrGrabResult->GetErrorCode() << " " << ptrGrabResult->GetErrorDescription() << endl;
-            }
-        }
 
+                Camera.Close();
+            }
+        }   
         
-        Camera.Close();
     }
     catch (const GenericException &e)
     {
