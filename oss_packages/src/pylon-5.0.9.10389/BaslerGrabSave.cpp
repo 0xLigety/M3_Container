@@ -67,15 +67,16 @@ int main(int argc, char *argv[])
                 cout << "Gray value of first pixel: " << (uint32_t) pImageBuffer[0] << endl << endl;
 
             CImagePersistence::Save(ImageFileFormat_Png, "GrabbedImage.png", ptrGrabResult);
-            Camera.Close();
+            break;
             }
             else
             {
                 cout << "Error: " << ptrGrabResult->GetErrorCode() << " " << ptrGrabResult->GetErrorDescription() << endl;
 
-                Camera.Close();
+                
             }
-        }   
+        }
+        Camera.Close();   
         
     }
     catch (const GenericException &e)
