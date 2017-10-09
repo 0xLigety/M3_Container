@@ -45,21 +45,19 @@ int main(int argc, char *argv[])
          // Print the model name of the camera.
          cout << "Using device " << Camera.GetDeviceInfo().GetModelName() << endl;
          
-        // Open the camera.
-        Camera.Open();
-
         Camera.StartGrabbing(1);
-
+        cout << "Start grabbing image" << endl;
         while(Camera.IsGrabbing())
         {
+            cout << "Grabbing image" << endl;
             // Wait for an image and then retrieve it. A timeout of 5000 ms is used.
             Camera.RetrieveResult(5000, ptrGrabResult, TimeoutHandling_ThrowException);
 
             // Image grabbed successfully?
             if (ptrGrabResult->GrabSucceeded())
             {
-                // Access the image data.
-                cout << "Grab successful" << ptrGrabResult->GetWidth() << endl;
+            // Access the image data.
+            cout << "Grab successful" << endl;
             CImagePersistence::Save(ImageFileFormat_Png, "GrabbedImage.png", ptrGrabResult);
             break;
             }
@@ -70,7 +68,8 @@ int main(int argc, char *argv[])
                 
             }
         }
-        Camera.Close();   
+        //Stop the grabbing.
+        Camera.StopGrabbing();
         
     }
     catch (const GenericException &e)
