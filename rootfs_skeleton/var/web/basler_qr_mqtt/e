@@ -13,7 +13,6 @@ IP_NETWORK=IP Network
 LOGGING=Log view
 OVERVIEW=Overview
 POLLING_TIME=Polling interval [s]
-PORT=Port
 RESTART=Restart
 RESTARTING_DEVICE=Restarting container.<br>This may take a few seconds.<br>
 RESTART_APP=Restart application now

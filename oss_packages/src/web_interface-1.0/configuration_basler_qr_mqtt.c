@@ -26,7 +26,7 @@ void *web_s_configuration(void) {
 
   /* Modbus */
   start_box();
-  fprintf(output, "<h3>%s</h3>\n", get_text("MODBUS_DEVICE"));
+  fprintf(output, "<h3>Basler GigE</h3>\n");
 
   fprintf(output, "%s", settings[SETTING_POLLING_TIME].name);
   print_input("text", settings[SETTING_POLLING_TIME].input_name, settings[SETTING_POLLING_TIME].value, "float: right; margin-right: 500px;", "");
