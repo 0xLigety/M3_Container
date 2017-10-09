@@ -1,11 +1,7 @@
 #!/bin/sh
 
-CONFIG=/usr/application/configuration.config 
-INTERVAL=$(awk '/^polling_Interval/{print $3}' "${CONFIG}")
-CAMERA=$(awk '/^basler_address/{print $3}' "${CONFIG}")
-ADDRESS=$(awk '/^basler_address/{print $3}' "${CONFIG}")
-PORT=$(awk '/^mosquitto_port/{print $3}' "${CONFIG}")
-TOPIC=$(awk '/^mosquitto_topic/{print $3}' "${CONFIG}")
+source /usr/application/configuration.config 
+
 
 
 #INTERVAL=5
@@ -18,11 +14,11 @@ MESSAGE="Test"
 while [ 1 ]
 do
 #Grab image from camera
-/usr/application/BaslerGrabSave ${CAMERA}
+/usr/application/BaslerGrabSave ${basler_address}
 #Read QR Code from grabbed image
 MESSAGE= "$(/usr/application/zxing /usr/application/GrabbedImage.png)"
 #Push message to mqtt broker
-/usr/application/mosquitto_pub -h ${ADDRESS} -p ${PORT} -t ${TOPIC} -m "${MESSAGE}"
+/usr/application/mosquitto_pub -h ${mosquitto_address} -p ${mosquitto_port} -t ${mosquitto_topic} -m "${MESSAGE}"
 #Sleep polling interval
-sleep ${INTERVAL}
+sleep ${polling_Interval}
 done
