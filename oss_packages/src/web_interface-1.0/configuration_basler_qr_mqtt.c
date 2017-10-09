@@ -76,7 +76,8 @@ void *web_c_configuration(void) {
   fputs("##### Container Configuration #####\n", config);
 
   /* Timing */
-  fputs("##### Timing #####\n", config);	get_line(line, "polling_Interval");
+  fputs("##### Timing #####\n", config);	
+  get_line(line, "polling_Interval");
   fputs(line, config);
 
   /* Modbus */
