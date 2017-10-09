@@ -14,6 +14,8 @@ source /usr/application/configuration.config
 
 #Grab image from camera
 /usr/application/BaslerGrabSave ${basler_address}
+#Copy to webpage
+cp GrabbedImage /var/www/localhost/htdocs/images/image.png
 #Read QR Code from grabbed image
 MESSAGE=$(/usr/application/zxing /usr/application/GrabbedImage.png)
 #Push message to mqtt broker

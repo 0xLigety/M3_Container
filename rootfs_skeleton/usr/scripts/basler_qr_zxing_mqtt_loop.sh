@@ -15,6 +15,8 @@ while [ 1 ]
 do
 #Grab image from camera
 /usr/application/BaslerGrabSave ${basler_address}
+#Copy to webpage
+cp GrabbedImage.png /var/www/localhost/htdocs/images/image.png
 #Read QR Code from grabbed image
 MESSAGE=$(/usr/application/zxing /usr/application/GrabbedImage.png)
 #Push message to mqtt broker
