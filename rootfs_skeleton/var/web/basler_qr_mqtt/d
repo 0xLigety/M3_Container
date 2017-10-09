@@ -3,7 +3,6 @@ ADMINISTRATION=Administration
 APPLICATION=Anwendung
 AUTHENTICATION=Anmeldung
 CONFIGURATION=Konfiguration
-DESIRED_BIT=Gew&auml;hltes Holding/Input Bit
 DNS=DNS-Server-Adresse
 ENGLISH=Englisch
 GATEWAY=Default-Gateway
