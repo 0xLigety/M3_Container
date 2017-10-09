@@ -22,9 +22,7 @@ int main(int argc, char *argv[])
     try
     {
 
-        // Define some constants.
-        const uint32_t cWidth = 640;
-        const uint32_t cHeight = 480;
+        int exitCode = 0;
 
         // This smart pointer will receive the grab result data.
         CGrabResultPtr ptrGrabResult;
@@ -84,7 +82,9 @@ int main(int argc, char *argv[])
         PylonTerminate(); 
         cerr << "Could not grab an image: " << endl
              << e.GetDescription() << endl;
+        exitcode = 1;
     }
 
     PylonTerminate(); 
+    return exitCode;
 }
