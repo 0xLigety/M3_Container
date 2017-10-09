@@ -44,18 +44,46 @@ int main(int argc, char *argv[])
         IPylonDevice* pDevice = pTl->CreateDevice(di);
         CBaslerGigEInstantCamera Camera(pDevice);
 
-        if (Camera.GrabOne(1000, ptrGrabResult))
+         // Print the model name of the camera.
+         cout << "Using device " << Camera.GetDeviceInfo().GetModelName() << endl;
+         
+        // Open the camera.
+        Camera.Open();
+
+        Camera.StartGrabbing(1)
+
+        while ( Camera.IsGrabbing())
         {
-            // The pylon grab result smart pointer classes provide a cast operator to the IImage
-            // interface. This makes it possible to pass a grab result directly to the
-            // function that saves an image to disk.
+            // Wait for an image and then retrieve it. A timeout of 5000 ms is used.
+            Camera.RetrieveResult( 3000, ptrGrabResult, TimeoutHandling_ThrowException);
+
+            // Image grabbed successfully?
+            if (ptrGrabResult->GrabSucceeded())
+            {
+                // Access the image data.
+                cout << "SizeX: " << ptrGrabResult->GetWidth() << endl;
+                cout << "SizeY: " << ptrGrabResult->GetHeight() << endl;
+                const uint8_t *pImageBuffer = (uint8_t *) ptrGrabResult->GetBuffer();
+                cout << "Gray value of first pixel: " << (uint32_t) pImageBuffer[0] << endl << endl;
+
             CImagePersistence::Save(ImageFileFormat_Png, "GrabbedImage.png", ptrGrabResult);
+
+            }
+            else
+            {
+                cout << "Error: " << ptrGrabResult->GetErrorCode() << " " << ptrGrabResult->GetErrorDescription() << endl;
+            }
         }
+
+        
+        Camera.Close();
     }
     catch (const GenericException &e)
     {
-
+        PylonTerminate(); 
         cerr << "Could not grab an image: " << endl
              << e.GetDescription() << endl;
     }
+
+    PylonTerminate(); 
 }
