@@ -153,7 +153,7 @@ slink /var/run                         /tmp/run                                 
 
 # web_interface
 file /var/www/localhost/htdocs/web.cgi                      ${STAGING_DIR}/bin/web_interface_pylon_zxing_mosquitto_mqtt 0755 0 0
-
+slink /var/www/localhost/images/image.png                   /usr/application/GrabbedImage.png    0777 0 0
 # slinks für web.cgi
 slink /var/www/localhost/htdocs/web_s_authentication.cgi    /var/www/localhost/htdocs/web.cgi 0777 0 0
 slink /var/www/localhost/htdocs/web_s_configuration.cgi     /var/www/localhost/htdocs/web.cgi 0777 0 0

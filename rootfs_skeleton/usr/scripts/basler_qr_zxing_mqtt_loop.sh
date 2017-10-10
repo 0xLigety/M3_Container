@@ -1,7 +1,7 @@
 #!/bin/sh
 
 source /usr/application/configuration.config 
-
+STOP = 0
 
 
 #INTERVAL=5
@@ -11,12 +11,10 @@ source /usr/application/configuration.config
 #TOPIC="/Basler"
 
 
-while [ 1 ]
+while [STOP == 0]
 do
 #Grab image from camera
 /usr/application/BaslerGrabSave ${basler_address}
-#Copy to webpage
-cp GrabbedImage.png /var/www/localhost/htdocs/images/image.png
 #Read QR Code from grabbed image
 MESSAGE=$(/usr/application/zxing /usr/application/GrabbedImage.png)
 #Push message to mqtt broker
