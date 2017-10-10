@@ -45,7 +45,13 @@ int main(int argc, char *argv[])
          // Print the model name of the camera.
          cout << "Using device " << Camera.GetDeviceInfo().GetModelName() << endl;
          
-        Camera.StartGrabbing(1);
+        cout << "Start grabbing image" << endl;
+        Camera.GrabOne(5000,ptrGrabResult,TimeoutHandling_ThrowException);
+        PylonTerminate(); 
+        cout << "Grab successful" << endl;
+
+        CImagePersistence::Save(ImageFileFormat_Png, "GrabbedImage.png", ptrGrabResult);
+        /*Camera.StartGrabbing(1);
         cout << "Start grabbing image" << endl;
         while(Camera.IsGrabbing())
         {
@@ -72,6 +78,7 @@ int main(int argc, char *argv[])
                 
             }
         }
+        */
     }
     catch (const GenericException &e)
     {
