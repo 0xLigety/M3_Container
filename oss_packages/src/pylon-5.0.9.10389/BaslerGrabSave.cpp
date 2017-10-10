@@ -58,19 +58,20 @@ int main(int argc, char *argv[])
             {
             // Access the image data.
             cout << "Grab successful" << endl;
+            Camera.StopGrabbing();
+            PylonTerminate(); 
             CImagePersistence::Save(ImageFileFormat_Png, "GrabbedImage.png", ptrGrabResult);
-            break;
+            //Stop the grabbing.
+           
             }
             else
             {
+                Camera.StopGrabbing();
                 cout << "Error: " << ptrGrabResult->GetErrorCode() << " " << ptrGrabResult->GetErrorDescription() << endl;
-
+                exitCode = 1;
                 
             }
         }
-        //Stop the grabbing.
-        Camera.StopGrabbing();
-        
     }
     catch (const GenericException &e)
     {
@@ -79,7 +80,5 @@ int main(int argc, char *argv[])
              << e.GetDescription() << endl;
         exitCode = 1;
     }
-
-    PylonTerminate(); 
     return exitCode;
 }
