@@ -46,11 +46,19 @@ int main(int argc, char *argv[])
          cout << "Using device " << Camera.GetDeviceInfo().GetModelName() << endl;
          
         cout << "Start grabbing image" << endl;
-        Camera.GrabOne(5000,ptrGrabResult,TimeoutHandling_ThrowException);
+        bool ready = Camera.GrabOne(5000,ptrGrabResult,TimeoutHandling_ThrowException);
         PylonTerminate(); 
         cout << "Grab successful" << endl;
-
-        CImagePersistence::Save(ImageFileFormat_Png, "GrabbedImage.png", ptrGrabResult);
+        if(ready == true){
+            CImagePersistence::Save(ImageFileFormat_Png, "GrabbedImage.png", ptrGrabResult);
+            cout << "Image saved" << endl;
+        }
+        else{
+            PylonTerminate(); 
+            cout << "Error: " << ptrGrabResult->GetErrorCode() << " " << ptrGrabResult->GetErrorDescription() << endl;
+            exitCode = 1;
+        }
+        
         /*Camera.StartGrabbing(1);
         cout << "Start grabbing image" << endl;
         while(Camera.IsGrabbing())
