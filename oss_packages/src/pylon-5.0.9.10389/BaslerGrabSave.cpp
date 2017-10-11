@@ -3,6 +3,7 @@
 #include <pylon/gige/PylonGigEIncludes.h>
 #include <pylon/gige/BaslerGigECamera.h>
 #include <pylon/gige/BaslerGigEInstantCamera.h>
+#include <pylon/ImagePersistence.h>
 
 // Namespace for using pylon objects.
 using namespace Pylon;
@@ -46,12 +47,17 @@ int main(int argc, char *argv[])
          cout << "Using device " << Camera.GetDeviceInfo().GetModelName() << endl;
          
         cout << "Start grabbing image" << endl;
-        bool ready = Camera.GrabOne(5000,ptrGrabResult,TimeoutHandling_ThrowException);
-        PylonTerminate(); 
-        cout << "Grab successful" << endl;
-        if(ready == true){
-            CImagePersistence::Save(ImageFileFormat_Png, "GrabbedImage.png", ptrGrabResult);
+        
+        
+        
+        if(Camera.GrabOne(5000,ptrGrabResult,TimeoutHandling_ThrowException)){
+            cout << "Grab successful" << endl;
+            CImagePersistenceOptions additionalOptions;
+            additionalOptions.SetQuality(50);
+            CImagePersistence::Save(ImageFileFormat_Png, "GrabbedImage.png", ptrGrabResult,&additionalOptions);
             cout << "Image saved" << endl;
+            PylonTerminate(); 
+            
         }
         else{
             PylonTerminate(); 
