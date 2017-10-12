@@ -5,6 +5,8 @@
 #include <pylon/gige/BaslerGigEInstantCamera.h>
 //#include <pylon/ImagePersistence.h
 #include <opencv2/core/core.hpp>
+#include "opencv2/imgproc.hpp";
+#include "opencv2/imgcodec.hpp";
 #include <sstream>
 
 // Namespace for using pylon objects.
@@ -72,35 +74,6 @@ int main(int argc, char *argv[])
             cout << "Error: " << ptrGrabResult->GetErrorCode() << " " << ptrGrabResult->GetErrorDescription() << endl;
             exitCode = 1;
         }
-        
-        /*Camera.StartGrabbing(1);
-        cout << "Start grabbing image" << endl;
-        while(Camera.IsGrabbing())
-        {
-            cout << "Grabbing image" << endl;
-            // Wait for an image and then retrieve it. A timeout of 5000 ms is used.
-            Camera.RetrieveResult(5000, ptrGrabResult, TimeoutHandling_ThrowException);
-
-            // Image grabbed successfully?
-            if (ptrGrabResult->GrabSucceeded())
-            {
-            // Access the image data.
-            cout << "Grab successful" << endl;
-            Camera.StopGrabbing();
-            PylonTerminate(); 
-            CImagePersistence::Save(ImageFileFormat_Png, "GrabbedImage.png", ptrGrabResult);
-            //Stop the grabbing.
-           
-            }
-            else
-            {
-                Camera.StopGrabbing();
-                cout << "Error: " << ptrGrabResult->GetErrorCode() << " " << ptrGrabResult->GetErrorDescription() << endl;
-                exitCode = 1;
-                
-            }
-        }
-        */
     }
     catch (const GenericException &e)
     {
