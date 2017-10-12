@@ -27,6 +27,9 @@ int main(int argc, char *argv[])
 
         // This smart pointer will receive the grab result data.
         CGrabResultPtr ptrGrabResult;
+        CImageFormatConverter formatConverter;//me
+        formatConverter.OutputPixelFormat = PixelType_BGR8packed;//me
+        CPylonImage pylonImage;
         CTlFactory &TlFactory = CTlFactory::GetInstance();
         ITransportLayer* pTl = TlFactory.CreateTl( CBaslerGigECamera::DeviceClass() );
 
@@ -43,6 +46,7 @@ int main(int argc, char *argv[])
         IPylonDevice* pDevice = pTl->CreateDevice(di);
         CBaslerGigEInstantCamera Camera(pDevice);
 
+
          // Print the model name of the camera.
          cout << "Using device " << Camera.GetDeviceInfo().GetModelName() << endl;
          
@@ -52,15 +56,15 @@ int main(int argc, char *argv[])
         
         if(Camera.GrabOne(5000,ptrGrabResult,TimeoutHandling_ThrowException)){
             cout << "Grab successful" << endl;
-            CImagePersistenceOptions additionalOptions;
-            additionalOptions.SetQuality(50);
-            CImagePersistence::Save(ImageFileFormat_Png, "GrabbedImage.png", ptrGrabResult,&additionalOptions);
+            
+            formatConverter.Convert(pylonImage, ptrGrabResult);
+            CImagePersistence::Save(ImageFileFormat_Png, "GrabbedImage.png", pylonImage);
             cout << "Image saved" << endl;
-            PylonTerminate(); 
+            
             
         }
         else{
-            PylonTerminate(); 
+             
             cout << "Error: " << ptrGrabResult->GetErrorCode() << " " << ptrGrabResult->GetErrorDescription() << endl;
             exitCode = 1;
         }
@@ -96,10 +100,11 @@ int main(int argc, char *argv[])
     }
     catch (const GenericException &e)
     {
-        PylonTerminate(); 
+        
         cerr << "Could not grab an image: " << endl
              << e.GetDescription() << endl;
         exitCode = 1;
     }
+    PylonTerminate();
     return exitCode;
 }
