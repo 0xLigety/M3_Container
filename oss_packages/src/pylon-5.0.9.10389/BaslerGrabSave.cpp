@@ -3,11 +3,15 @@
 #include <pylon/gige/PylonGigEIncludes.h>
 #include <pylon/gige/BaslerGigECamera.h>
 #include <pylon/gige/BaslerGigEInstantCamera.h>
-#include <pylon/ImagePersistence.h>
+//#include <pylon/ImagePersistence.h
+#include <opencv2/core/core.hpp>
+#include <sstream>
 
 // Namespace for using pylon objects.
 using namespace Pylon;
 using namespace GenApi;
+// Namespace for using opencv objects.
+using namespace cv;
 
 // Namespace for using cout.
 using namespace std;
@@ -33,16 +37,12 @@ int main(int argc, char *argv[])
         CTlFactory &TlFactory = CTlFactory::GetInstance();
         ITransportLayer* pTl = TlFactory.CreateTl( CBaslerGigECamera::DeviceClass() );
 
-        //DeviceInfoList_t lstDevices;
-        //pTl->EnumerateDevices( lstDevices );
-        //if ( lstDevices.empty() ) {
-        //    cerr <<  "No devices found" << endl;
-        //    exit(1);
-       //}
-        //IPylonDevice* pDevice = pTl->CreateDevice( lstDevices[0] );
+
+        // Create an OpenCV image
+	    Mat openCvImage;
+
         CBaslerGigEDeviceInfo di;
         di.SetIpAddress(argv[1]);
-        //IPylonDevice *device = TlFactory.CreateDevice(di);
         IPylonDevice* pDevice = pTl->CreateDevice(di);
         CBaslerGigEInstantCamera Camera(pDevice);
 
@@ -60,7 +60,9 @@ int main(int argc, char *argv[])
             cout << "Grab successful" << endl;
             
             formatConverter.Convert(pylonImage, ptrGrabResult);
-            CImagePersistence::Save(ImageFileFormat_Png, "GrabbedImage.png", pylonImage);
+            openCvImage= cv::Mat(ptrGrabResult->GetHeight(), ptrGrabResult->GetWidth(), CV_8UC3, (uint8_t *) pylonImage.GetBuffer());
+            imwrite("GrabbedImage.png", openCvImage); 
+            //CImagePersistence::Save(ImageFileFormat_Png, "GrabbedImage.png", pylonImage);
             cout << "Image saved" << endl;
             
             
