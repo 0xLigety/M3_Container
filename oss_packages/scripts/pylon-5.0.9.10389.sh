@@ -57,6 +57,7 @@ install_staging()
     cd "${PKG_SRC_DIR}"
     cp "${TARGET}" "${STAGING_DIR}"
     cp /opt/pylon5/lib/*.so "${STAGING_DIR}/lib/"
+    cp libopencv* "${STAGING_DIR}/lib/"
 }
 
 . ${HELPERSDIR}/call_functions.sh
