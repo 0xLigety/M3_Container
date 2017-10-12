@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     int exitCode = 0;
 
     // Before using any pylon methods, the pylon runtime must be initialized.
-    PylonInitialize();
+    Pylon::PylonAutoInitTerm autoInitTerm;
 
     try
     {
@@ -46,9 +46,11 @@ int main(int argc, char *argv[])
         IPylonDevice* pDevice = pTl->CreateDevice(di);
         CBaslerGigEInstantCamera Camera(pDevice);
 
-
-         // Print the model name of the camera.
-         cout << "Using device " << Camera.GetDeviceInfo().GetModelName() << endl;
+        Camera.MaxNumBuffer = 2;
+        
+         
+        // Print the model name of the camera.
+        cout << "Using device " << Camera.GetDeviceInfo().GetModelName() << endl;
          
         cout << "Start grabbing image" << endl;
         
@@ -105,6 +107,6 @@ int main(int argc, char *argv[])
              << e.GetDescription() << endl;
         exitCode = 1;
     }
-    PylonTerminate();
+   
     return exitCode;
 }

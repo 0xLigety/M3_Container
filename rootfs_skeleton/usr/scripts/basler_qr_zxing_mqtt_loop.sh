@@ -1,17 +1,12 @@
 #!/bin/sh
 
 source /usr/application/configuration.config 
-STOP = 0
-
-
 #INTERVAL=5
 #CAMERA=192.168.88.7
 #ADDRESS=192.168.88.49
 #PORT=1884
 #TOPIC="/Basler"
-
-
-while [STOP == 0]
+while [1]
 do
 #Grab image from camera
 /usr/application/BaslerGrabSave ${basler_address}
