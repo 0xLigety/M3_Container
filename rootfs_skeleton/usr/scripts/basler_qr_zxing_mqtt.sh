@@ -15,7 +15,7 @@ source /usr/application/configuration.config
 #Grab image from camera
 /usr/application/BaslerGrabSave ${basler_address}
 #Read QR Code from grabbed image
-MESSAGE=$(/usr/application/zxing /usr/application/GrabbedImage.png)
+MESSAGE=$(/usr/application/zxing /usr/application/GrabbedImage.jpg)
 #Push message to mqtt broker
 /usr/application/mosquitto_pub -h ${mosquitto_address} -p ${mosquitto_port} -t ${mosquitto_topic} -m "${MESSAGE}"
 
