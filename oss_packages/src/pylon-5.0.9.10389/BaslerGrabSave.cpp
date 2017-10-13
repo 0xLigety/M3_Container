@@ -5,8 +5,8 @@
 #include <pylon/gige/BaslerGigEInstantCamera.h>
 #include <pylon/ImagePersistence.h>
 #include <string>
-#include <opencv2/imgproc/imgproc.hpp>;
-#include <opencv2/imgcodec/imgcodec.hpp>;
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/imgcodecs/imgcodecs.hpp>
 #include "logging.h"
 #include "read_config.h"
 #include "error_defines.h"
@@ -49,6 +49,7 @@ int main(int argc, char *argv[])
 
         int exitCode = 0;
         string imageDriver = argv[2];
+        
         // This smart pointer will receive the grab result data.
         CGrabResultPtr ptrGrabResult;
         CImageFormatConverter formatConverter;//me
@@ -74,8 +75,8 @@ int main(int argc, char *argv[])
         
          
         // Print the model name of the camera.
-        log_entry(APP_NAME, "Using Device "+Camera.GetDeviceInfo().GetModelName());
-        printf("Using Device "+Camera.GetDeviceInfo().GetModelName());
+        log_entry(APP_NAME, printf("Using Device %c ",Camera.GetDeviceInfo().GetModelName()));
+        printf("Using Device %c ",Camera.GetDeviceInfo().GetModelName());
        
  
         log_entry(APP_NAME, "Start grabbing image");
@@ -108,15 +109,15 @@ int main(int argc, char *argv[])
             
         }
         else{
-            log_entry(APP_NAME, "Error: "+ptrGrabResult->GetErrorCode()+ " " + ptrGrabResult->GetErrorDescription());
-            printf("Error: "+ptrGrabResult->GetErrorCode()+ " " + ptrGrabResult->GetErrorDescription());
+            log_entry(APP_NAME, printf("Error: %c %c ",ptrGrabResult->GetErrorCode(),ptrGrabResult->GetErrorDescription()));
+            printf("Error: %c %c ",ptrGrabResult->GetErrorCode(),ptrGrabResult->GetErrorDescription());
             exitCode = 1;
         }
     }
     catch (const GenericException &e)
     {
-        log_entry(APP_NAME,  "Could not grab an image: "+e.GetDescription());
-        printf( "Could not grab an image: "+e.GetDescription());
+        log_entry(APP_NAME,   printf( "Could not grab an image: %c ",e.GetDescription()));
+        printf( "Could not grab an image: %c ",e.GetDescription());
         exitCode = 1;
     }
    
