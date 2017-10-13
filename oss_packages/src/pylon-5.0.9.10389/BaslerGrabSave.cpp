@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
         Camera.MaxNumBuffer = 2;
 
         // Print the model name of the camera.
-        log_entry(APP_NAME, printf("Using Device %s ",Camera.GetDeviceInfo().GetModelName()));
+       
         printf("Using Device %s ",Camera.GetDeviceInfo().GetModelName());
        
  
@@ -104,14 +104,14 @@ int main(int argc, char *argv[])
             
         }
         else{
-            log_entry(APP_NAME, printf("Error: %s %s ",ptrGrabResult->GetErrorCode(),ptrGrabResult->GetErrorDescription()));
-            printf("Error: %s %s ",ptrGrabResult->GetErrorCode(),ptrGrabResult->GetErrorDescription());
+            log_entry(APP_NAME, "Error: Grabbing image failed");
+            printf("Error: %c %s ",ptrGrabResult->GetErrorCode(),ptrGrabResult->GetErrorDescription());
             exitCode = 1;
         }
     }
     catch (const GenericException &e)
     {
-        log_entry(APP_NAME,   printf( "Could not grab an image: %s ",e.GetDescription()));
+        log_entry(APP_NAME, "Could not grab an image",e.GetDescription());
         printf( "Could not grab an image: %s ",e.GetDescription());
         exitCode = 1;
     }
