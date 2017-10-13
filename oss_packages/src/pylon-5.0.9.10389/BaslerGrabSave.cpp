@@ -86,44 +86,44 @@ int main(int argc, char *argv[])
         printf("Using Device %s ",Camera.GetDeviceInfo().GetModelName());
        
  
-        log_entry(APP_NAME, "Start grabbing image");
+       //log_entry(APP_NAME, "Start grabbing image");
         printf("Start grabbing image");
         
         
         
         if(Camera.GrabOne(5000,ptrGrabResult,TimeoutHandling_ThrowException)){
       
-            log_entry(APP_NAME, "Grab successful");
+            //log_entry(APP_NAME, "Grab successful");
             printf("Grab successful");
             
             formatConverter.Convert(pylonImage, ptrGrabResult);
             if(imageDriver=="pylon"){
-                log_entry(APP_NAME, "Using pylon imagepersistence");
+               // log_entry(APP_NAME, "Using pylon imagepersistence");
                 printf("Using pylon imagepersistence");
                 CImagePersistence::Save(ImageFileFormat_Png, "GrabbedImage.png", pylonImage);
 
             }else{
-                log_entry(APP_NAME, "Using opencv imwrite");
+               // log_entry(APP_NAME, "Using opencv imwrite");
                 printf("Using opencv imwrite");
                 openCvImage= cv::Mat(ptrGrabResult->GetHeight(), ptrGrabResult->GetWidth(), CV_8UC3, (uint8_t *) pylonImage.GetBuffer());
                 imwrite("GrabbedImage.png", openCvImage); 
             }
           
             
-            log_entry(APP_NAME, "Image saved");
+           // log_entry(APP_NAME, "Image saved");
             printf("Image saved");
             
             
         }
         else{
-            log_entry(APP_NAME, "Error: Grabbing image failed");
+           // log_entry(APP_NAME, "Error: Grabbing image failed");
             printf("Error: %c %s ",ptrGrabResult->GetErrorCode(),ptrGrabResult->GetErrorDescription());
             exitCode = 1;
         }
     }
     catch (const GenericException &e)
     {
-        log_entry(APP_NAME, "Could not grab an image",e.GetDescription());
+       // log_entry(APP_NAME, "Could not grab an image",e.GetDescription());
         printf( "Could not grab an image: %s ",e.GetDescription());
         exitCode = 1;
     }

@@ -7,6 +7,8 @@ NAME       := BaslerGrabSave
 # Installation directories for pylon
 PYLON_ROOT ?= /opt/pylon5
 
+INCLUDES := $(wildcard *.h)
+
 # Build tools and flags
 LD         := armv7a-hardfloat-linux-gnueabi-g++
 CPPFLAGS   := $(shell $(PYLON_ROOT)/bin/pylon-config --cflags) -I/usr/armv7a-hardfloat-gnueabi/usr/include/opencv2/
@@ -20,7 +22,7 @@ all: $(NAME)
 $(NAME): $(NAME).o
 	$(LD) $(LDFLAGS) -o $@ $^ $(LDLIBS)
 
-$(NAME).o: $(NAME).cpp
+$(NAME).o: $(NAME).cpp 
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $<
 
 clean:
