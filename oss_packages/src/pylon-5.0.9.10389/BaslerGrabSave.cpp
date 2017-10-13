@@ -7,14 +7,26 @@
 #include <string>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/imgcodecs/imgcodecs.hpp>
+#include <vector>
+#include <sstream>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "logging.h"
 #include "read_config.h"
 #include "error_defines.h"
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <vector>
-#include <sstream>
+
+#ifdef __cplusplus
+}
+#endif
+
+
+
 
 #define MRX
 #define CONFIG_FILE_PATH "/usr/application/configuration.config"
