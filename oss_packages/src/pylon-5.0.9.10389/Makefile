@@ -12,7 +12,7 @@ LD         := armv7a-hardfloat-linux-gnueabi-g++
 CPPFLAGS   := $(shell $(PYLON_ROOT)/bin/pylon-config --cflags) -I/usr/armv7a-hardfloat-gnueabi/usr/include/opencv2/
 CXXFLAGS   := #e.g., CXXFLAGS=-g -O0 for debugging
 LDFLAGS    := $(shell $(PYLON_ROOT)/bin/pylon-config --libs-rpath)
-LDLIBS     := $(shell $(PYLON_ROOT)/bin/pylon-config --libs) -lopencv_core -lopencv_imgproc -lopencv_imgcodes
+LDLIBS     := $(shell $(PYLON_ROOT)/bin/pylon-config --libs) -lopencv_core -lopencv_imgproc -lopencv_imgcodecs
 
 # Rules for building
 all: $(NAME)
