@@ -2,7 +2,7 @@
 
 # name of directory after extracting the archive in working directory
 PKG_DIR="latest-OpenCV"
-TARGET="OpenCv"
+TARGET="latest-OpenCV"
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.deb"
 # download link for the sources to be stored in dl directory
