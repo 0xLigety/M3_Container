@@ -5,7 +5,6 @@ PKG_DIR="latest-OpenCV"
 TARGET="OpenCv"
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.deb"
-
 # download link for the sources to be stored in dl directory
 PKG_DOWNLOAD="https://github.com/jabelone/OpenCV-for-Pi/raw/master/${PKG_ARCHIVE_FILE}"
 
@@ -28,8 +27,6 @@ configure()
    
     cp -r ./data/usr/local/include/opencv2 /usr/armv7a-hardfloat-gnueabi/usr/include/
     cp ./data/usr/local/lib/* /usr/armv7a-hardfloat-gnueabi/usr/lib/
-  
-    
 }
 
 install_staging()
@@ -39,8 +36,6 @@ install_staging()
     cp /data/usr/local/lib/libopencv_core* "${STAGING_DIR}/lib/"
     cp /data/usr/local/lib/libopencv_imgproc* "${STAGING_DIR}/lib/"
     cp /data/usr/local/lib/libopencv_imgcodecs* "${STAGING_DIR}/lib/"
-
-
 }
 
 . ${HELPERSDIR}/call_functions.sh
