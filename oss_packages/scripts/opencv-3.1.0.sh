@@ -25,8 +25,8 @@ configure()
 {
     cd "${PKG_BUILD_DIR}"
    
-    cp -r ./data/usr/local/include/opencv2 /usr/armv7a-hardfloat-gnueabi/usr/include/
-    cp ./data/usr/local/lib/* /usr/armv7a-hardfloat-gnueabi/usr/lib/
+    cp -r ./usr/local/include/opencv2 /usr/armv7a-hardfloat-gnueabi/usr/include/
+    cp ./usr/local/lib/* /usr/armv7a-hardfloat-gnueabi/usr/lib/
 }
 
 install_staging()
