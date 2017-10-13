@@ -3,11 +3,28 @@
 #include <pylon/gige/PylonGigEIncludes.h>
 #include <pylon/gige/BaslerGigECamera.h>
 #include <pylon/gige/BaslerGigEInstantCamera.h>
-//#include <pylon/ImagePersistence.h
-#include <opencv2/core/core.hpp>
-#include "opencv2/imgproc.hpp";
-#include "opencv2/imgcodec.hpp";
+#include <pylon/ImagePersistence.h>
+#include <string>
+#include <opencv2/imgproc/imgproc.hpp>;
+#include <opencv2/imgcodec/imgcodec.hpp>;
+#include "logging.h"
+#include "read_config.h"
+#include "error_defines.h"
+#include <time.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <vector>
 #include <sstream>
+
+#define MRX
+#define CONFIG_FILE_PATH "/usr/application/configuration.config"
+
+#define APP_NAME "pylon"
+
+#define SPLIT_LINE "\n############################################"
+
+#define BUFFER_SIZE     200
+
 
 // Namespace for using pylon objects.
 using namespace Pylon;
@@ -17,6 +34,7 @@ using namespace cv;
 
 // Namespace for using cout.
 using namespace std;
+
 
 int main(int argc, char *argv[])
 {
@@ -30,7 +48,7 @@ int main(int argc, char *argv[])
     {
 
         int exitCode = 0;
-
+        string imageDriver = argv[2];
         // This smart pointer will receive the grab result data.
         CGrabResultPtr ptrGrabResult;
         CImageFormatConverter formatConverter;//me
@@ -49,37 +67,56 @@ int main(int argc, char *argv[])
         CBaslerGigEInstantCamera Camera(pDevice);
 
         Camera.MaxNumBuffer = 2;
+
+        vector<int> compression_params;
+        compression_params.push_back(CV_IMWRITE_JPEG_COMPRESSION);
+        compression_params.push_back(7);
         
          
         // Print the model name of the camera.
-        cout << "Using device " << Camera.GetDeviceInfo().GetModelName() << endl;
-         
-        cout << "Start grabbing image" << endl;
+        log_entry(APP_NAME, "Using Device "+Camera.GetDeviceInfo().GetModelName());
+        printf("Using Device "+Camera.GetDeviceInfo().GetModelName());
+       
+ 
+        log_entry(APP_NAME, "Start grabbing image");
+        printf("Start grabbing image");
         
         
         
         if(Camera.GrabOne(5000,ptrGrabResult,TimeoutHandling_ThrowException)){
-            cout << "Grab successful" << endl;
+      
+            log_entry(APP_NAME, "Grab successful");
+            printf("Grab successful");
             
             formatConverter.Convert(pylonImage, ptrGrabResult);
-            openCvImage= cv::Mat(ptrGrabResult->GetHeight(), ptrGrabResult->GetWidth(), CV_8UC3, (uint8_t *) pylonImage.GetBuffer());
-            imwrite("GrabbedImage.png", openCvImage); 
-            //CImagePersistence::Save(ImageFileFormat_Png, "GrabbedImage.png", pylonImage);
-            cout << "Image saved" << endl;
+            if(imageDriver=="pylon"){
+                log_entry(APP_NAME, "Using pylon imagepersistence");
+                printf("Using pylon imagepersistence");
+                CImagePersistence::Save(ImageFileFormat_Png, "GrabbedImage.png", pylonImage);
+
+            }else{
+                log_entry(APP_NAME, "Using opencv imwrite");
+                printf("Using opencv imwrite");
+                openCvImage= cv::Mat(ptrGrabResult->GetHeight(), ptrGrabResult->GetWidth(), CV_8UC3, (uint8_t *) pylonImage.GetBuffer());
+                imwrite("GrabbedImage.png", openCvImage); 
+            }
+          
+            
+            log_entry(APP_NAME, "Image saved");
+            printf("Image saved");
             
             
         }
         else{
-             
-            cout << "Error: " << ptrGrabResult->GetErrorCode() << " " << ptrGrabResult->GetErrorDescription() << endl;
+            log_entry(APP_NAME, "Error: "+ptrGrabResult->GetErrorCode()+ " " + ptrGrabResult->GetErrorDescription());
+            printf("Error: "+ptrGrabResult->GetErrorCode()+ " " + ptrGrabResult->GetErrorDescription());
             exitCode = 1;
         }
     }
     catch (const GenericException &e)
     {
-        
-        cerr << "Could not grab an image: " << endl
-             << e.GetDescription() << endl;
+        log_entry(APP_NAME,  "Could not grab an image: "+e.GetDescription());
+        printf( "Could not grab an image: "+e.GetDescription());
         exitCode = 1;
     }
    
