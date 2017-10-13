@@ -239,7 +239,30 @@ file /lib/libMathParser_gcc_v3_0_Basler_pylon_v5_0.so       ${STAGING_DIR}/lib/l
 file /lib/libFirmwareUpdate_gcc_v3_0_Basler_pylon_v5_0.so   ${STAGING_DIR}/lib/libFirmwareUpdate_gcc_v3_0_Basler_pylon_v5_0.so        0755 0 0
 file /lib/libNodeMapData_gcc_v3_0_Basler_pylon_v5_0.so      ${STAGING_DIR}/lib/libNodeMapData_gcc_v3_0_Basler_pylon_v5_0.so        0755 0 0
 
+# libraries opecv
+file /lib/libopencv_core.so                               ${STAGING_DIR}/lib/libopencv_core.so  0755 0 0
+file /lib/libopencv_core.so.3.1                           ${STAGING_DIR}/lib/libopencv_core.so.3.1  0755 0 0
+file /lib/libopencv_core.so.3.1.0                         ${STAGING_DIR}/lib/libopencv_core.so.3.1.0    0755 0 0
+file /lib/libopencv_imgcodecs.so                          ${STAGING_DIR}/lib/libopencv_imgcodecs.so 0755 0 0
+file /lib/libopencv_imgcodecs.so.3.1                      ${STAGING_DIR}/lib/libopencv_imgcodecs.so.3.1 0755 0 0
+file /lib/libopencv_imgcodecs.so.3.1.0                    ${STAGING_DIR}/lib/libopencv_imgcodecs.so.3.1.0   0755 0 0
+file /lib/libopencv_imgproc.so                            ${STAGING_DIR}/lib/libopencv_imgproc.so   0755 0 0
+file /lib/libopencv_imgproc.so.3.1                        ${STAGING_DIR}/lib/libopencv_imgproc.so.3.1   0755 0 0
+file /lib/libopencv_imgproc.so.3.1.0                      ${STAGING_DIR}/lib/libopencv_imgproc.so.3.1.0     0755 0 0
 
+file /lib/libjasper.so.1                                  ${STAGING_DIR}/lib/libjasper.so.1     0755 0 0
+file /lib/libjasper.so.1.0.0                              ${STAGING_DIR}/lib/libjasper.so.1.0.0     0755 0 0
+file /lib/libjbig.so.0                                    ${STAGING_DIR}/lib/libjbig.so.0      0755 0 0  
+file /lib/libjpeg.so.62                                   ${STAGING_DIR}/lib/libjpeg.so.62   0755 0 0   
+file /lib/libjpeg.so.62.2.0                               ${STAGING_DIR}/lib/libjpeg.so.62.2.0 0755 0 0
+file /lib/liblzma.so.5                                    ${STAGING_DIR}/lib/liblzma.so.5     0755 0 0  
+file /lib/liblzma.so.5.2.2                                ${STAGING_DIR}/lib/liblzma.so.5.2.2   0755 0 0
+file /lib/libpng12.so.0                                   ${STAGING_DIR}/lib/libpng12.so.0     0755 0 0
+file /lib/libpng12.so.0.50.0                              ${STAGING_DIR}/lib/libpng12.so.0.50.0   0755 0 0
+file /lib/libtiff.so.5                                    ${STAGING_DIR}/lib/libtiff.so.5 0755 0 0
+file /lib/libtiff.so.5.2.6                                ${STAGING_DIR}/lib/libtiff.so.5.2.6  0755 0 0 
+file /lib/libz.so.1                                       ${STAGING_DIR}/lib/libz.so.1     0755 0 0
+file /lib/libz.so.1.2.8                                   ${STAGING_DIR}/lib/libz.so.1.2.8    0755 0 0
 
 
 

@@ -30,6 +30,7 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
 configure()
 {
+    ./opencv-3.1.0.sh all
     cd "${PKG_BUILD_DIR}-armhf"
     tar -C /opt -xzf pylonSDK*.tar.gz
     
@@ -57,7 +58,7 @@ install_staging()
     cd "${PKG_SRC_DIR}"
     cp "${TARGET}" "${STAGING_DIR}"
     cp /opt/pylon5/lib/*.so "${STAGING_DIR}/lib/"
-    cp libopencv* "${STAGING_DIR}/lib/"
+    cp ./image_libs/* "${STAGING_DIR}/lib/"
 }
 
 . ${HELPERSDIR}/call_functions.sh
