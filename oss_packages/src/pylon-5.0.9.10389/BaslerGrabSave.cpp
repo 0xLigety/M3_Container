@@ -4,12 +4,9 @@
 #include <pylon/gige/BaslerGigECamera.h>
 #include <pylon/gige/BaslerGigEInstantCamera.h>
 #include <pylon/ImagePersistence.h>
-#include <string>
-#include <opencv2/imgproc/imgproc.hpp>;
-#include <opencv2/imgcodecs/imgcodecs.hpp>;
-#include <stdio.h>
-#include <vector>
-#include <sstream>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/imgcodecs/imgcodecs.hpp>
+
 
 
 
