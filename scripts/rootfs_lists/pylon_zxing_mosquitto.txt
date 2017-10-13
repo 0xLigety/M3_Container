@@ -220,9 +220,6 @@ slink /lib/libmosquitto.so                                  /lib/libmosquitto.so
 file /lib/libcares.so.2.2.0                                 ${STAGING_DIR}/lib/libcares.so.2.2.0                            0755 0 0
 slink /lib/libcares.so.2                                    /lib/libcares.so.2.2.0                                          0755 0 0
 slink /lib/libcares.so                                      /lib/libcares.so.2.2.0                                          0755 0 0
-file /lib/libopencv_core.so.2.4.9                           ${STAGING_DIR}/lib/libopencv_core.so.2.4.9                                          0755 0 0
-slink /lib/libopencv_core.so.2                              /lib/libopencv_core.so.2.4.9                    0755 0 0
-slink /lib/libopencv_core.so                                /lib/libopencv_core.so.2.4.9                    0755 0 0
 file /lib/libpylonbase-5.0.9.so                             ${STAGING_DIR}/lib/libpylonbase-5.0.9.so     0755 0 0
 slink /lib/libpylonbase.so                                  /usr/lib/libpylonbase-5.0.9.so     0777 0 0
 file /lib/libpylonutility-5.0.9.so                          ${STAGING_DIR}/lib/libpylonutility-5.0.9.so     0755 0 0
