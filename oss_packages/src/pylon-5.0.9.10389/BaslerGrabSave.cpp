@@ -9,21 +9,9 @@
 #include <opencv2/imgcodecs/imgcodecs.hpp>
 #include <vector>
 #include <sstream>
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include "logging.h"
-#include "read_config.h"
-#include "error_defines.h"
-#include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-#ifdef __cplusplus
-}
-#endif
 
 
 
