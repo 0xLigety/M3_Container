@@ -33,9 +33,9 @@ install_staging()
 {
     cd "${PKG_BUILD_DIR}"
    
-    cp /data/usr/local/lib/libopencv_core* "${STAGING_DIR}/lib/"
-    cp /data/usr/local/lib/libopencv_imgproc* "${STAGING_DIR}/lib/"
-    cp /data/usr/local/lib/libopencv_imgcodecs* "${STAGING_DIR}/lib/"
+    cp /usr/armv7a-hardfloat-linux-gnueabi/usr/lib/libopencv_core.* "${STAGING_DIR}/lib/"
+    cp /usr/armv7a-hardfloat-linux-gnueabi/usr/lib/libopencv_imgproc.* "${STAGING_DIR}/lib/"
+    cp /usr/armv7a-hardfloat-linux-gnueabi/usr/lib/libopencv_imgcodecs.* "${STAGING_DIR}/lib/"
 }
 
 . ${HELPERSDIR}/call_functions.sh
