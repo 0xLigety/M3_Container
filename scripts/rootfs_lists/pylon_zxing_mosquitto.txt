@@ -237,6 +237,7 @@ file /lib/libFirmwareUpdate_gcc_v3_0_Basler_pylon_v5_0.so   ${STAGING_DIR}/lib/l
 file /lib/libNodeMapData_gcc_v3_0_Basler_pylon_v5_0.so      ${STAGING_DIR}/lib/libNodeMapData_gcc_v3_0_Basler_pylon_v5_0.so        0755 0 0
 
 # libraries opecv
+file /lib/libtbb.so                                       ${STAGING_DIR}/lib/libtbb.so  0755 0 0
 file /lib/libopencv_core.so                               ${STAGING_DIR}/lib/libopencv_core.so  0755 0 0
 file /lib/libopencv_core.so.3.1                           ${STAGING_DIR}/lib/libopencv_core.so.3.1  0755 0 0
 file /lib/libopencv_core.so.3.1.0                         ${STAGING_DIR}/lib/libopencv_core.so.3.1.0    0755 0 0

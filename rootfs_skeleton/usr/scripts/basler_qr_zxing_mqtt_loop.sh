@@ -6,7 +6,7 @@ source /usr/application/configuration.config
 #ADDRESS=192.168.88.49
 #PORT=1884
 #TOPIC="/Basler"
-while [1]
+while true
 do
 #Grab image from camera
 /usr/application/BaslerGrabSave ${basler_address}
